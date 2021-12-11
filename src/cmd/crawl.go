@@ -11,7 +11,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CrawlSetup() *cobra.Command{
+func CrawlSetup() *cobra.Command {
 	var crawler = pkg.Crawler{
 		GetBlockUrl: "https://api.blockchain.info/haskoin-store/btc/block/heights?heights=%s&notx=false",
 		GetTxUrl:    "https://api.blockchain.info/haskoin-store/btc/transactions?txids=%s",
@@ -30,8 +30,20 @@ func CrawlSetup() *cobra.Command{
 		Long: `download transactions in given block heights.
 Please give reasonable block heights.`,
 		Args: func(cmd *cobra.Command, args []string) error {
-			if isInterval && len(args) != 2 {
-				return errors.New("you should only given 2 args with `-r` flag")
+			if !isInterval && filepath == "" {
+				if len(args) == 0 {
+					return errors.New("not enough arguments")
+				}
+			}
+			if isInterval {
+				if len(args) != 2 {
+					return errors.New("you should only given 2 args with `-r` flag")
+				}
+				l, _ := strconv.Atoi(args[0])
+				r, _ := strconv.Atoi(args[1])
+				if l > r {
+					return errors.New("the second argument should greater than or equal to the first argument")
+				}
 			}
 			return nil
 		},
