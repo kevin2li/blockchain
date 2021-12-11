@@ -14,4 +14,6 @@
 
 `tool cluster -f <path_to_dataset> <address>`
 
+3. visualize BTC transactions based on an entity's addresses:
 
+`tool viz -d <path_to_dataset>  -a <path_to_address>`
