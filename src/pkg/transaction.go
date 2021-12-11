@@ -1,11 +1,13 @@
 package pkg
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/pkg/errors"
@@ -152,4 +154,25 @@ func MashalTransactions(txDir string, savepath string) error {
 	}
 	Save(savepath, obj, os.O_CREATE|os.O_WRONLY|os.O_TRUNC)
 	return nil
+}
+
+func ReadAddrs(path string) ([]string, error) {
+	addrs := make([]string, 0)
+	f, err := os.OpenFile(path, os.O_RDONLY, 0666)
+	if err != nil {
+		err = errors.Wrap(err, fmt.Sprintf("read %s failed", path))
+		return nil, err
+	}
+	defer f.Close()
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := scanner.Text()
+		addrs_str := strings.Split(line, " ")
+		addrs = append(addrs, addrs_str...)
+	}
+	if err := scanner.Err(); err != nil {
+		err = errors.Wrap(err, "scanner error")
+		return nil, err
+	}
+	return addrs, nil
 }

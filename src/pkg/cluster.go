@@ -3,6 +3,8 @@ package pkg
 import (
 	"fmt"
 	"log"
+	"os"
+	"strings"
 )
 
 func MultiInputHeuristic(addr string, tx Transaction) []string {
@@ -97,5 +99,6 @@ func StartCluster(dataset_path string, start_addr string) {
 	fmt.Printf("INFO: Start cluster from address: %s!\n", start_addr)
 	result := Cluster(start_addr, all_txs)
 	fmt.Println("\n--------------------------------Cluster Finished!--------------------------------")
-	fmt.Printf("INFO: cluster total %d addresses, final cluster result:\n %v\n", len(result), result)
+	fmt.Printf("INFO: cluster total %d addresses, final cluster result saved at %s\n", len(result), "cluster_result.txt")
+	Save("cluster_result.txt", []byte(strings.Join(result, " ")), os.O_CREATE|os.O_WRONLY|os.O_TRUNC)
 }

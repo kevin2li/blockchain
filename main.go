@@ -1,6 +1,8 @@
 package main
 
-import "blockchain/src/cmd"
+import (
+	"blockchain/src/cmd"
+)
 
 func main() {
 	cmd.Execute()
@@ -14,4 +16,10 @@ func main() {
 	// fmt.Printf("txid: %+v\n", tx.Txid)
 	// fmt.Printf("in: %+v\n", in_addrs)
 	// fmt.Printf("out: %+v\n", out_addrs)
+
+	// addrs, err := pkg.ReadAddrs("/home/likai/code/go_program/go_learn2/cluster_result.txt")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println(addrs)
 }

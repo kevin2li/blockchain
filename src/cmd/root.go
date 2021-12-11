@@ -18,9 +18,11 @@ func RootSetup() *cobra.Command {
 		},
 	}
 	downloadCmd := CrawlSetup()
-	clusterCmd := ClusterSetup()
+	clusterCmd := ClusterSetup() // go run main.go cluster -f data/block_height=711900-711999.json 3Jx1ThGhh5P9vL5XkMw1NauH2YEDSZo4Wd
+	vizCmd := VizSetup()
 	rootCmd.AddCommand(downloadCmd)
 	rootCmd.AddCommand(clusterCmd)
+	rootCmd.AddCommand(vizCmd)
 	return rootCmd
 }
 
