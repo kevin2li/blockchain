@@ -10,8 +10,8 @@ import (
 func RootSetup() *cobra.Command {
 	var rootCmd = &cobra.Command{
 		Use:   "tool",
-		Short: "bitcoin data analysis tool",
-		Long: `bitcoin data analysis tool, including data download, addrress cluster, transaction visualization, etc.`,
+		Short: "BTC data analysis tool",
+		Long: `BTC data analysis tool, including data download, addrress cluster, transaction visualization, etc.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			// Do Stuff Here
 			fmt.Println("Please give subcommond!")

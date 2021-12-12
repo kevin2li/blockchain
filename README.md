@@ -1,23 +1,25 @@
 
-# Bitcoin data analysis tool
+# BTC data analysis tool
 
-## Installation
+# Installation
 
-`go build`
+`go build -o tool`
 
 # Usage
-1. download BTC blockchain data:
+1. download BTC tool data:
 
-`./blockchain download <heights>`
+`./tool download <heights>`
 
-`./blockchain download -r <start_height> <end_height>`
+`./tool download -r <start_height> <end_height>`
 
-`./blockchain download -f <path_to_heights>`
+`./tool download -f <path_to_heights>`
 
 2. cluster BTC address:
 
-`./blockchain cluster -f <path_to_dataset> <address>`
+`./tool cluster -f <path_to_dataset> <address>`
 
 3. visualize BTC transactions based on an entity's addresses:
 
-`./blockchain viz -d <path_to_dataset>  -a <path_to_address>`
+`docker run --name kevin-neo4j -p7474:7474 -p7687:7687 --rm -v $HOME/neo4j/data:/data -v $HOME/neo4j/logs:/logs -v $HOME/neo4j/import:/var/lib/neo4j/import -v $HOME/neo4j/plugins:/plugins --env NEO4J_AUTH=neo4j/neo4j neo4j:latest`
+
+`./tool viz -d <path_to_dataset>  -a <path_to_address>`
