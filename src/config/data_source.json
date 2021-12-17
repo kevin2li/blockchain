@@ -1,0 +1,10 @@
+{
+    "BTC": {
+		"GetBlockUrl": "https://api.blockchain.info/haskoin-store/btc/block/heights?heights=%s&notx=false",
+		"GetTxUrl": "https://api.blockchain.info/haskoin-store/btc/transactions?txids=%s"
+	},
+    "ETH":{
+        "GetBlockUrl": "https://api.blockchain.info/v2/eth/data/blocks?size=%s&from=%s",
+        "GetTxUrl": "https://api.blockchain.info/v2/eth/data/block/hash/%s"
+    }
+}

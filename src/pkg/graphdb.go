@@ -128,7 +128,9 @@ func Visualize(all_txs []Transaction, addrs []string) error {
 		return err
 	}
 	defer driver.Close()
-	txs := Filter(all_txs, addrs)
+	// txs := Filter(all_txs, addrs)
+	txs := all_txs
+	
 	var n = len(txs)
 	bar := GetProgressBar(n)
 	defer bar.Close()

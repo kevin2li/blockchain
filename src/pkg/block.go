@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-type Block struct {
+type BTCBlock struct {
 	Hash      string   `json:"hash"`
 	Height    uint     `json:"height"`
 	Mainchain bool     `json:"mainchain"`
@@ -26,6 +26,36 @@ type Block struct {
 	Outputs   uint64   `json:"outputs"`
 	// Work      uint64   `json:"work"`
 	Weight uint `json:"weight"`
+}
+
+type ETHBlock struct {
+	BlockHeaders []struct {
+		Hash                     string        `json:"hash"`
+		Number                   string        `json:"number"`
+		ParentHash               string        `json:"parentHash"`
+		Uncles                   []interface{} `json:"uncles"`
+		Sha3Uncles               string        `json:"sha3Uncles"`
+		TransactionsRoot         string        `json:"transactionsRoot"`
+		StateRoot                string        `json:"stateRoot"`
+		LogsBloom                string        `json:"logsBloom"`
+		Difficulty               string        `json:"difficulty"`
+		TotalDifficulty          string        `json:"totalDifficulty"`
+		GasLimit                 string        `json:"gasLimit"`
+		GasUsed                  string        `json:"gasUsed"`
+		ExtraData                string        `json:"extraData"`
+		Timestamp                string        `json:"timestamp"`
+		Size                     string        `json:"size"`
+		Miner                    string        `json:"miner"`
+		Nonce                    string        `json:"nonce"`
+		StaticReward             string        `json:"staticReward"`
+		BlockReward              string        `json:"blockReward"`
+		TotalUncleReward         string        `json:"totalUncleReward"`
+		TotalFees                string        `json:"totalFees"`
+		TransactionCount         int           `json:"transactionCount"`
+		InternalTransactionCount int           `json:"internalTransactionCount"`
+	} `json:"blockHeaders"`
+	From string `json:"from"`
+	Size int    `json:"size"`
 }
 
 func ReadHeights(path string) ([]int, error) {
